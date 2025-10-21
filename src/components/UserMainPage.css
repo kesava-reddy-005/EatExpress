@@ -1,0 +1,213 @@
+/* 🌟 Overall Page */
+.user-page {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom right, #fffaf5, #ffe6cc);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* 🌟 Header */
+.header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ff7b00;
+  color: white;
+  padding: 15px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo1 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.title1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.welcome-text {
+  font-weight: 600;
+  color: #ffe;
+}
+
+.cart-btn,
+.logout-btn {
+  background: white;
+  color: #ff7b00;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cart-btn:hover,
+.logout-btn:hover {
+  background: #333;
+  color: white;
+}
+
+/* 🌟 Search */
+.search-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.search-input {
+  width: 50%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #ff9f43;
+  border-radius: 25px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search-input:focus {
+  border-color: #ff7b00;
+  box-shadow: 0 0 8px #ff7b00;
+}
+
+/* 🌟 Restaurant Grid */
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 0 40px 40px;
+}
+
+.restaurant-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  text-align: center;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 123, 0, 0.3);
+}
+
+.restaurant-name1 {
+  color: #ff7b00;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.restaurant-owner,
+.restaurant-address {
+  font-size: 0.95rem;
+  margin: 5px 0;
+  color: #555;
+}
+
+.order-btn {
+  background: #ff7b00;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.order-btn:hover {
+  background: #333;
+}
+
+/* 🌟 Orders Popup */
+.orders-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 51, 51, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orders-box {
+  background: white;
+  padding: 30px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  animation: popupFade 0.4s ease;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.orders-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-item {
+  background: #fff7ec;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border-left: 5px solid #ff7b00;
+}
+
+.status.pending {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.status.delivered {
+  color: green;
+  font-weight: bold;
+}
+
+.close-orders-btn {
+  display: block;
+  width: 100%;
+  background: #ff7b00;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-orders-btn:hover {
+  background: #333;
+}
