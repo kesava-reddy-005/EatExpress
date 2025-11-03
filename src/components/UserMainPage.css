@@ -211,3 +211,52 @@
 .close-orders-btn:hover {
   background: #333;
 }
+
+/* 🌟 Orders Popup */
+.orders-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 51, 51, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orders-box {
+  position: relative; /* ✅ Needed for absolute button positioning */
+  background: white;
+  padding: 30px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  animation: popupFade 0.4s ease;
+}
+
+/* ✅ Top-right close button */
+.close-orders-btn-top {
+  position: fixed;
+  top: 12px;
+  right: 15px;
+  background: #ff7b00;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 2.8rem;
+  width: 62px;
+  height: 62px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-orders-btn-top:hover {
+  background: #333;
+  transform: scale(1.1);
+}
+

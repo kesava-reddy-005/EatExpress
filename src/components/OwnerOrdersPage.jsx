@@ -16,7 +16,7 @@ const OwnerOrdersPage = () => {
 
       // ✅ Fetch orders for this owner's restaurant only
       axios
-        .get(`https://eatexpress-backend.onrender.com/order/restaurant/${parsedData.id}`)
+        .get(`http://localhost:5000/order/restaurant/${parsedData.id}`)
         .then((res) => {
           setOrders(res.data);
           setLoading(false);

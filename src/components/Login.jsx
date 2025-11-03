@@ -20,10 +20,10 @@ export default function AuthForms() {
     e.preventDefault();
 
     let endpoint = "";
-    if (formType === "ownerRegister") endpoint = "https://eatexpress-backend.onrender.com/owner/register";
-    if (formType === "ownerLogin") endpoint = "https://eatexpress-backend.onrender.com/owner/login";
-    if (formType === "userRegister") endpoint = "https://eatexpress-backend.onrender.com/user/signup";
-    if (formType === "userLogin") endpoint = "https://eatexpress-backend.onrender.com/user/login";
+    if (formType === "ownerRegister") endpoint = "http://localhost:5000/owner/register";
+    if (formType === "ownerLogin") endpoint = "http://localhost:5000/owner/login";
+    if (formType === "userRegister") endpoint = "http://localhost:5000/user/signup";
+    if (formType === "userLogin") endpoint = "http://localhost:5000/user/login";
 
     try {
       const res = await fetch(endpoint, {

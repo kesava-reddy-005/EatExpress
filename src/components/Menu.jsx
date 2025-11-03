@@ -9,15 +9,36 @@ export default function Menu() {
   const [showAddress, setShowAddress] = useState(false);
   const [address, setAddress] = useState("");
   const [user, setUser] = useState(null);
-   const navigate = useNavigate();
+  const [restaurant, setRestaurant] = useState(null); // ✅ for restaurant details
+  const navigate = useNavigate();
 
+  // ✅ Fetch restaurant details by ID
+  useEffect(() => {
+    const fetchRestaurant = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/owner/${restaurantId}`);
+        if (res.ok) {
+          const data = await res.json();
+          setRestaurant(data);
+        } else {
+          console.error("Failed to fetch restaurant details");
+        }
+      } catch (err) {
+        console.error("Error fetching restaurant:", err);
+      }
+    };
+
+    fetchRestaurant();
+  }, [restaurantId]);
+
+  // ✅ Fetch user from localStorage
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (storedUser?.id) setUser(storedUser);
     else console.warn("⚠️ User info missing in localStorage");
   }, []);
 
-  // sample menu
+  // ✅ Sample menu items
   useEffect(() => {
     const items = [
       {id: "biryani_special",name: "Biryani Special",price: 180,rating: 4.5,img: "https://bing.com/th?id=OSK.2552e6291efb4c9e7b6fad792c34985b",},
@@ -75,7 +96,7 @@ export default function Menu() {
     };
 
     try {
-      const res = await fetch("https://eatexpress-backend.onrender.com/order/", {
+      const res = await fetch("http://localhost:5000/order/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),
@@ -98,8 +119,27 @@ export default function Menu() {
 
   return (
     <div className="menu-container">
-      <button style={{backgroundColor:"orange",color:"white",fontSize:"1.2rem",borderBlockColor:"orange"}} onClick={()=>{navigate("/user")}}>Home</button>
-      <h2 className="menu-title">🍽️ Menu for Restaurant #{restaurantId}</h2>
+      <button
+        style={{
+          backgroundColor: "orange",
+          color: "white",
+          fontSize: "1.2rem",
+          borderBlockColor: "orange",
+        }}
+        onClick={() => {
+          navigate("/user");
+        }}
+      >
+        Home
+      </button>
+
+      {/* ✅ Display restaurant name instead of ID */}
+      <h2 className="menu-title">
+        🍽️ Menu for Restaurant:{" "}
+        <span style={{ color: "orange" }}>
+          {restaurant ? restaurant.restaurantName : "Loading..."}
+        </span>
+      </h2>
 
       <div className="menu-grid">
         {menuItems.map((item) => (

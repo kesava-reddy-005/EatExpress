@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "./UserMainPage.css";
 import logo from "../assets/Gemini_Generated_Image_14sqii14sqii14sq.png";
 
-
 const UserMainPage = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [search, setSearch] = useState("");
@@ -19,7 +18,7 @@ const UserMainPage = () => {
     else navigate("/");
 
     axios
-      .get("https://eatexpress-backend.onrender.com/owner/owners")
+      .get("http://localhost:5000/owner/owners")
       .then((res) => setRestaurants(res.data))
       .catch((err) => console.error(err));
   }, [navigate]);
@@ -37,7 +36,7 @@ const UserMainPage = () => {
     }
 
     try {
-      const res = await axios.get(`https://eatexpress-backend.onrender.com/order/user/${user.id}`);
+      const res = await axios.get(`http://localhost:5000/order/user/${user.id}`);
       setOrders(res.data);
       setShowOrders(true);
     } catch (err) {
@@ -110,6 +109,12 @@ const UserMainPage = () => {
       {showOrders && (
         <div className="orders-popup">
           <div className="orders-box">
+            <button
+              className="close-orders-btn-top"
+              onClick={() => setShowOrders(false)}
+            >
+              ✖
+            </button>
             <h2>📦 My Orders</h2>
             {orders.length === 0 ? (
               <p className="empty-orders">No orders found.</p>
@@ -138,12 +143,6 @@ const UserMainPage = () => {
                 ))}
               </ul>
             )}
-            <button
-              className="close-orders-btn"
-              onClick={() => setShowOrders(false)}
-            >
-              ✖ Close
-            </button>
           </div>
         </div>
       )}
