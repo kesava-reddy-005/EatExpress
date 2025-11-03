@@ -18,7 +18,7 @@ const UserMainPage = () => {
     else navigate("/");
 
     axios
-      .get("http://localhost:5000/owner/owners")
+      .get("https://eatexpress-backend.onrender.com/owner/owners")
       .then((res) => setRestaurants(res.data))
       .catch((err) => console.error(err));
   }, [navigate]);
@@ -36,7 +36,7 @@ const UserMainPage = () => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:5000/order/user/${user.id}`);
+      const res = await axios.get(`https://eatexpress-backend.onrender.com/order/user/${user.id}`);
       setOrders(res.data);
       setShowOrders(true);
     } catch (err) {

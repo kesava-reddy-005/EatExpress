@@ -16,7 +16,7 @@ export default function Menu() {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/owner/${restaurantId}`);
+        const res = await fetch(`https://eatexpress-backend.onrender.com/owner/${restaurantId}`);
         if (res.ok) {
           const data = await res.json();
           setRestaurant(data);
@@ -96,7 +96,7 @@ export default function Menu() {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/order/", {
+      const res = await fetch("https://eatexpress-backend.onrender.com/order/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),
